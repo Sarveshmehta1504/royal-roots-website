@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Gallery — Royal Roots Plywood Projects Ahmedabad Gujarat</title>
+  <meta name="description" content="Browse 1500 plus completed projects using Royal Roots plywood laminates and acrylic across residential commercial hospitality and healthcare sectors in Ahmedabad Gujarat.">
+  <link rel="canonical" href="https://royalroots.in/gallery">
+  
+  <meta name="geo.region" content="IN-GJ">
+  <meta name="geo.placename" content="Ahmedabad">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "ImageGallery",
+    "name": "Royal Roots Ply India Project Gallery",
+    "description": "1500+ completed projects using Royal Roots premium interior materials across Gujarat.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Royal Roots Ply India Pvt. Ltd.",
+      "url": "https://royalroots.in"
+    }
+  }
+  </script>
+
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/whatsapp.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <style>
+    /* Section 1: Hero Band */
+    .hero-gallery {
+      background-color: var(--color-near-black);
+      padding: 60px 0 80px;
+      color: var(--color-white);
+      text-align: center;
+    }
+    .breadcrumb {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: var(--spacing-4);
+      display: inline-block;
+    }
+    .breadcrumb-sep {
+      color: rgba(255,255,255,0.4);
+      margin: 0 var(--spacing-2);
+    }
+
+    /* Section 2: Filter Bar */
+    .filter-bar {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 60px; /* Below navbar */
+      z-index: 50;
+      padding: var(--spacing-4) 0;
+    }
+    .filter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-4);
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+    }
+    .filter-count {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      margin-left: auto;
+    }
+
+    /* Section 3: Masonry Grid */
+    .masonry-section {
+      padding: 60px 0 100px;
+      background-color: var(--color-white);
+    }
+    #gallery-grid {
+      column-count: 3;
+      column-gap: 20px;
+      transition: opacity 0.2s ease-in-out;
+    }
+    @media (max-width: 900px) {
+      #gallery-grid { column-count: 2; }
+    }
+    @media (max-width: 600px) {
+      #gallery-grid { column-count: 1; }
+    }
+    .gallery-tile {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      display: block;
+      background-color: #f4f4f4;
+    }
+    .tile-image {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-tile:hover .tile-image {
+      transform: scale(1.05);
+    }
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.5);
+      transition: background-color 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: var(--spacing-6);
+    }
+    .gallery-tile:hover .tile-overlay {
+      background-color: rgba(0,0,0,0.3);
+    }
+    .tile-text {
+      color: var(--color-white);
+    }
+    .tile-name {
+      font-family: var(--font-family-heading);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .tile-location {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gold);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .tile-products {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    .tile-arrow {
+      color: var(--color-white);
+      transition: color 0.2s ease;
+      display: flex;
+    }
+    .gallery-tile:hover .tile-arrow {
+      color: var(--color-gold);
+    }
+
+    /* Section 4: Lightbox */
+    #lightbox-container:empty { display: none; }
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(28, 28, 28, 0.95);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-10);
+      overflow-y: auto;
+    }
+    .lightbox-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-split {
+      display: flex;
+      min-height: 600px;
+    }
+    .lightbox-left {
+      width: 65%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-image {
+      width: 100%;
+      height: 100%;
+      max-height: 85vh;
+      object-fit: cover;
+    }
+    .lightbox-right {
+      width: 35%;
+      background-color: var(--color-white);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+    .lightbox-badge {
+      display: inline-block;
+      background-color: rgba(184, 150, 46, 0.1);
+      color: var(--color-gold);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+      align-self: flex-start;
+    }
+    .lightbox-title {
+      font-family: var(--font-family-heading);
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-2);
+      color: var(--color-near-black);
+    }
+    .lightbox-location {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-6);
+    }
+    .lightbox-products {
+      margin-bottom: var(--spacing-6);
+    }
+    .products-label {
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+      color: var(--color-near-black);
+      margin-bottom: var(--spacing-2);
+    }
+    .products-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .products-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: 6px;
+    }
+    .products-list li::before {
+      content: "•";
+      color: var(--color-gold);
+      position: absolute;
+      left: 0;
+      font-size: 18px;
+      line-height: 1;
+      top: -1px;
+    }
+    .lightbox-desc {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-8);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--color-near-black);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(0,0,0,0.1); }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+      color: var(--color-gold);
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.2s;
+    }
+    .lightbox-nav:hover { transform: translateY(-50%) scale(1.1); }
+    .lightbox-prev { left: -60px; }
+    .lightbox-next { right: calc(35% - 20px); }
+
+    @media (max-width: 992px) {
+      .lightbox-split { flex-direction: column; }
+      .lightbox-left, .lightbox-right { width: 100%; }
+      .lightbox-left { max-height: 50vh; }
+      .lightbox-overlay { padding: var(--spacing-4); }
+      .lightbox-nav { display: none; /* Rely on swipe/footer buttons on mobile */ }
+      .lightbox-close { top: 10px; right: 10px; background: rgba(0,0,0,0.5); color: white; border: none; }
+    }
+
+    /* Section 5: Submit Form */
+    .submit-project {
+      padding: 80px 0;
+      background-color: var(--color-background-warm);
+    }
+    .submit-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .submit-form-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: var(--spacing-10);
+      border-radius: var(--radius-lg);
+      margin-top: var(--spacing-8);
+    }
+    .file-upload-area {
+      border: 2px dashed var(--color-border);
+      padding: var(--spacing-8) var(--spacing-4);
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      background-color: #FAFAFA;
+      margin-bottom: var(--spacing-2);
+    }
+    .file-upload-area:hover { border-color: var(--color-gold); }
+
+  </style>
+</head>
+<body>
+
+  <!-- Shared Navbar -->
+  <header class="navbar" id="site-header">
+    <div class="container navbar-container">
+      <a href="/" class="navbar-brand navbar-logos">
+        <img src="assets/royal-roots-logo.jpg" alt="Royal Roots Ply India" class="logo-royal-roots" loading="lazy">
+        <div class="logo-divider"></div>
+        <img src="assets/homify-roots-logo.jpg" alt="Homify Roots" class="logo-homify-roots" loading="lazy">
+      </a>
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About</a>
+        <div class="nav-item-dropdown">
+          <a href="/products" class="nav-link">Products ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="/products/plywood" class="dropdown-item"><span class="dropdown-title">Plywood</span><span class="dropdown-desc">Silver, Gold, Platinum grades</span></a>
+            <a href="/products/laminates" class="dropdown-item"><span class="dropdown-title">Laminates</span><span class="dropdown-desc">500+ exclusive designs</span></a>
+            <a href="/products/acrylic" class="dropdown-item"><span class="dropdown-title">Acrylic Sheets</span><span class="dropdown-desc">Glossy, Matte, Marble finish</span></a>
+            <a href="/products/veneer" class="dropdown-item"><span class="dropdown-title">Veneer</span><span class="dropdown-desc">Gurjan, Teak, Oak selection</span></a>
+            <a href="/products/louvers" class="dropdown-item"><span class="dropdown-title">Louvers</span><span class="dropdown-desc">Horizontal and Vertical</span></a>
+          </div>
+        </div>
+        <a href="/gallery" class="nav-link active">Gallery</a>
+        <a href="/resources" class="nav-link">Resources</a>
+        <a href="/franchise" class="nav-link">Franchise</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="navbar-actions"><a href="tel:+919974859974" class="btn btn-dark">Call Us</a></div>
+      <button class="navbar-toggle" id="mobile-menu-toggle" aria-label="Toggle menu"><span class="navbar-toggle-icon"></span></button>
+    </div>
+  </header>
+  
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/about" class="mobile-nav-link">About</a>
+      <a href="/products" class="mobile-nav-link">Products</a>
+      <a href="/gallery" class="mobile-nav-link active">Gallery</a>
+      <a href="/resources" class="mobile-nav-link">Resources</a>
+      <a href="/franchise" class="mobile-nav-link">Franchise</a>
+      <a href="/contact" class="mobile-nav-link">Contact</a>
+    </nav>
+    <div class="mobile-menu-bottom">
+      <img src="assets/royal-roots-logo.jpg" alt="Royal Roots" class="logo-royal-roots logo-white" loading="lazy">
+      <div class="logo-divider"></div>
+      <img src="assets/homify-roots-logo.jpg" alt="Homify Roots" class="logo-homify-roots logo-white" loading="lazy">
+    </div>
+  </div>
+
+  <main id="main-content">
+    
+    <!-- Section 1: Hero Band -->
+    <section class="hero-gallery">
+      <div class="container">
+        <div class="breadcrumb">
+          HOME <span class="breadcrumb-sep">/</span> GALLERY
+        </div>
+        <h1 style="font-family: var(--font-family-heading); font-size: 56px; margin: 0; line-height: 1.1;">Our projects.</h1>
+        <p style="color: var(--color-gold); font-size: 18px; font-style: italic; margin-top: var(--spacing-4);">1,500 plus projects delivered across Gujarat. Here is a glimpse.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Filter Bar -->
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-row">
+          <div class="filter-pills" id="gallery-filters">
+            <button class="btn btn-outline filter-btn active btn-dark" data-filter="all">All</button>
+            <button class="btn btn-outline filter-btn" data-filter="residential">Residential</button>
+            <button class="btn btn-outline filter-btn" data-filter="commercial">Commercial</button>
+            <button class="btn btn-outline filter-btn" data-filter="hospitality">Hospitality</button>
+            <button class="btn btn-outline filter-btn" data-filter="healthcare">Healthcare</button>
+            <button class="btn btn-outline filter-btn" data-filter="industrial">Industrial</button>
+          </div>
+          <div class="filter-count" id="gallery-count">Showing 20 Projects</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Masonry Grid -->
+    <section class="masonry-section">
+      <div class="container">
+        <div id="gallery-grid">
+          <!-- Gallery items will be injected by GalleryView.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Lightbox Container -->
+    <div id="lightbox-container">
+      <!-- Lightbox will be injected by GalleryView.js -->
+    </div>
+
+    <!-- Section 5: Submit Your Project -->
+    <section class="submit-project">
+      <div class="container">
+        <div class="submit-container text-center">
+          <h2 style="font-family: var(--font-family-heading); font-size: 40px; margin-bottom: var(--spacing-2);">Used Royal Roots materials?</h2>
+          <p style="color: var(--color-text-secondary);">Share your project and we will feature it in our gallery and social media.</p>
+          
+          <div class="submit-form-box text-left">
+            <form id="project-submit-form" onsubmit="event.preventDefault(); this.innerHTML = '<div class=\'form-success\'>Thank you! Our team will review your project and contact you within 48 hours.</div>';">
+              
+              <div class="grid grid-2" style="gap: var(--spacing-4); margin-bottom: var(--spacing-4);">
+                <div class="form-group">
+                  <label class="form-label" for="proj-name">Your Name</label>
+                  <input type="text" id="proj-name" class="form-input" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="proj-phone">Phone Number</label>
+                  <input type="tel" id="proj-phone" class="form-input" required placeholder="99748 59974">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="proj-loc">Project Location</label>
+                <input type="text" id="proj-loc" class="form-input" required placeholder="e.g. Science City, Ahmedabad">
+              </div>
+
+              <div class="form-group mb-6">
+                <label class="form-label">Products Used (Select all that apply)</label>
+                <div class="flex flex-wrap gap-2">
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Platinum Plywood</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Gold Plywood</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Silver Plywood</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Laminates</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Acrylic Sheets</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Veneer</label>
+                  <label class="btn btn-outline" style="padding: 4px 12px; font-size: var(--font-size-sm); cursor: pointer;"><input type="checkbox" style="display:none;"> Louvers</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Upload Project Photos</label>
+                <div class="file-upload-area">
+                  <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--color-gold); margin: 0 auto var(--spacing-2);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                  <p style="font-weight: 500; font-size: var(--font-size-sm);">Drag & drop or <span style="color: var(--color-gold); text-decoration: underline;">browse files</span></p>
+                  <p style="font-size: 11px; color: var(--color-text-secondary); margin-top: 4px;">Accepts JPG, PNG, WEBP</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="proj-desc">Short Description (Optional)</label>
+                <textarea id="proj-desc" class="form-input" rows="3" placeholder="Tell us a little bit about this project..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-dark w-100 mt-4">Submit My Project</button>
+              <p class="text-center" style="font-size: 11px; color: var(--color-text-secondary); margin-top: var(--spacing-3);">Our team will review your project and contact you within 48 hours.</p>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="navbar-logos" style="justify-content: center; margin-bottom: var(--spacing-4);">
+          <img src="assets/royal-roots-logo.jpg" alt="Royal Roots" class="logo-royal-roots logo-white" loading="lazy">
+          <div class="logo-divider" style="background-color: rgba(255,255,255,0.2);"></div>
+          <img src="assets/homify-roots-logo.jpg" alt="Homify Roots" class="logo-homify-roots logo-white" loading="lazy">
+        </div>
+        <q class="footer-tagline">"Rooted in Quality, Growing with Trust."</q>
+        <div class="footer-certification">AN ISO 9001:2015 CERTIFIED COMPANY</div>
+      </div>
+      
+      <div class="grid grid-3 mb-8" style="gap: var(--spacing-10); border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--spacing-8);">
+        <div>
+          <h4 class="footer-heading">Products</h4>
+          <ul class="footer-links">
+            <li><a href="/products/plywood">Plywood & Blockboards</a></li>
+            <li><a href="/products/laminates">Decorative Laminates</a></li>
+            <li><a href="/products/acrylic">Premium Acrylic Sheets</a></li>
+            <li><a href="/products/veneer">Natural Veneers</a></li>
+            <li><a href="/products/louvers">Wall Louvers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/gallery">Project Gallery</a></li>
+            <li><a href="/franchise">Partner with Us</a></li>
+            <li><a href="/resources">Resources & Downloads</a></li>
+            <li><a href="/videos">Videos</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 class="footer-heading">Contact Us</h4>
+          <p>Royal Roots Ply India Pvt. Ltd.</p>
+          <p>
+             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/><path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/></svg> 
+             <a href="tel:+919974859974" style="color: inherit; text-decoration: none;">+91 99748 59974</a>
+          </p>
+          <p>
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"/></svg>
+            <a href="mailto:info@royalrootsply.com" style="color: inherit; text-decoration: none;">info@royalrootsply.com</a>
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">F</a>
+            <a href="#" aria-label="Instagram">I</a>
+            <a href="#" aria-label="LinkedIn">L</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>&copy; 2026 Royal Roots Ply India Pvt. Ltd. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/sitemap">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { NavViewModel } from './js/viewmodels/NavViewModel.js';
+    import { NavView } from './js/views/NavView.js';
+    import { GalleryViewModel } from './js/viewmodels/GalleryViewModel.js';
+    import { GalleryView } from './js/views/GalleryView.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      // Init mobile nav
+      const navVM = new NavViewModel();
+      new NavView(navVM);
+
+      // Init gallery MVVM
+      const galleryVM = new GalleryViewModel();
+      new GalleryView(galleryVM);
+      
+      // Setup pill button group interactions for the form
+      const pillLabels = document.querySelectorAll('.submit-form-box .flex-wrap label');
+      pillLabels.forEach(label => {
+        const checkbox = label.querySelector('input');
+        label.addEventListener('click', (e) => {
+          if (e.target !== checkbox) {
+            checkbox.checked = !checkbox.checked;
+          }
+          if (checkbox.checked) {
+            label.classList.add('btn-dark');
+            label.classList.remove('btn-outline');
+          } else {
+            label.classList.remove('btn-dark');
+            label.classList.add('btn-outline');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
