@@ -9,7 +9,8 @@ export class GalleryViewModel {
     this.state = {
       activeFilter: 'all',
       filteredItems: [...this.allItems],
-      lightboxItem: null // null if closed, or the item object if open
+      lightboxItem: null, // null if closed, or the item object if open
+      lightboxIndex: -1
     };
     this.listeners = [];
   }
@@ -31,14 +32,34 @@ export class GalleryViewModel {
       } else {
         this.state.filteredItems = this.allItems.filter(item => item.category === category);
       }
+      // Reset lightbox if filtering changes while it's somehow open (edge case)
+      this.state.lightboxItem = null;
+      this.state.lightboxIndex = -1;
       this.notify();
     }
   }
 
   openLightbox(itemId) {
-    const item = this.allItems.find(i => i.id === itemId);
-    if (item) {
-      this.state.lightboxItem = item;
+    const idx = this.state.filteredItems.findIndex(i => i.id === itemId);
+    if (idx !== -1) {
+      this.state.lightboxItem = this.state.filteredItems[idx];
+      this.state.lightboxIndex = idx;
+      this.notify();
+    }
+  }
+
+  nextLightbox() {
+    if (this.state.lightboxItem !== null && this.state.filteredItems.length > 0) {
+      this.state.lightboxIndex = (this.state.lightboxIndex + 1) % this.state.filteredItems.length;
+      this.state.lightboxItem = this.state.filteredItems[this.state.lightboxIndex];
+      this.notify();
+    }
+  }
+
+  prevLightbox() {
+    if (this.state.lightboxItem !== null && this.state.filteredItems.length > 0) {
+      this.state.lightboxIndex = (this.state.lightboxIndex - 1 + this.state.filteredItems.length) % this.state.filteredItems.length;
+      this.state.lightboxItem = this.state.filteredItems[this.state.lightboxIndex];
       this.notify();
     }
   }
@@ -46,6 +67,7 @@ export class GalleryViewModel {
   closeLightbox() {
     if (this.state.lightboxItem !== null) {
       this.state.lightboxItem = null;
+      this.state.lightboxIndex = -1;
       this.notify();
     }
   }
