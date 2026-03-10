@@ -1,0 +1,66 @@
+/* css/table.css */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--spacing-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--font-family-body);
+  background-color: var(--color-white);
+}
+
+/* Header Row */
+.table thead tr {
+  background-color: var(--color-near-black);
+  color: var(--color-white);
+}
+
+.table th {
+  padding: var(--spacing-4) var(--spacing-5);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  letter-spacing: 0.02em;
+}
+
+/* Body Rows */
+.table td {
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  vertical-align: top;
+}
+
+/* Alternating Backgrounds */
+.table tbody tr:nth-child(even) {
+  background-color: var(--color-background-warm);
+}
+
+/* Hover effect on rows */
+.table tbody tr:hover {
+  background-color: rgba(184, 150, 46, 0.05); /* Slight gold tint */
+}
+
+/* Emphasized Cells (e.g., column representing the recommended product) */
+.table td.highlight {
+  background-color: rgba(184, 150, 46, 0.1);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  border-left: 2px solid var(--color-gold);
+}
+.table th.highlight {
+  color: var(--color-gold);
+}
+
+/* Remove border from last row */
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
