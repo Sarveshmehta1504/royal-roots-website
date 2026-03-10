@@ -1,0 +1,54 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Product",
+      "position": 1,
+      "name": "Platinum Plywood — BWP IS 710",
+      "image": "https://royalroots.in/assets/products/platinum-ply.jpg",
+      "description": "100% waterproof Boiling Waterproof (BWP) plywood manufactured with 100% Gurjan core. 30-year warranty.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Royal Roots Ply"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 2,
+      "name": "Gold Plywood — Enhanced BWR IS 303",
+      "image": "https://royalroots.in/assets/products/gold-ply.jpg",
+      "description": "High-density Boiling Water Resistant (BWR) plywood ideal for kitchen overheads and heavy load applications. 25-year warranty.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Royal Roots Ply"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 3,
+      "name": "Silver Plywood — BWR IS 303",
+      "image": "https://royalroots.in/assets/products/silver-ply.jpg",
+      "description": "Standard Boiling Water Resistant (BWR) plywood for premium dry interior applications. 15-year warranty.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Royal Roots Ply"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}

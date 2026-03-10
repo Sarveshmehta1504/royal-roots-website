@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow access to development/private folders if any
+Disallow: /js/
+Disallow: /css/
+Disallow: /assets/
+
+# Crawl delay to prevent server overload
+Crawl-delay: 5
+
+# Sitemap location
+Sitemap: https://royalroots.in/sitemap.xml

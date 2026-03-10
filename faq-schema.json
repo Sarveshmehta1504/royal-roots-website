@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between BWP and BWR plywood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BWR meets IS 303 and resists moisture under normal conditions while BWP meets IS 710 and withstands boiling water. Silver and Gold grades are BWR, and Platinum is BWP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which plywood is best for kitchen cabinets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend Gold grade as the minimum for kitchens, and Platinum grade for areas directly exposed to water or steam like under-sink units."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Royal Roots 30-year warranty work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It covers bonding and delamination defects. Contact 99748 59974 or email info@royalrootsply.com for warranty registration and to receive full terms via our verifiable warranty document."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Royal Roots plywood termite-proof?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all grades (Silver, Gold, Platinum) undergo 4-stage chemical treatment, fully protecting against termites, borers, and fungi for the warranty period."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you deliver outside Ahmedabad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we deliver across Ahmedabad, Gandhinagar, and Mehsana. For other cities in Gujarat and other states, please contact our team at 99748 59974."
+      }
+    }
+  ]
+}
