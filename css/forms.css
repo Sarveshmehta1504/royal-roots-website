@@ -1,0 +1,171 @@
+/* css/forms.css */
+
+/* Form Group */
+.form-group {
+  margin-bottom: var(--spacing-4);
+  position: relative;
+}
+
+/* Label */
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-text-primary);
+}
+
+/* Input, Textarea, Select */
+.form-control {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.1); /* Gold glow */
+}
+
+.form-control::placeholder {
+  color: var(--color-text-light);
+  opacity: 1;
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234A4A4A" viewBox="0 0 16 16"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  background-size: 12px 12px;
+  padding-right: var(--spacing-8);
+}
+
+/* Phone Number Prefix Wrapper */
+.form-phone-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.form-phone-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-3);
+  background-color: var(--color-background-warm);
+  border: 1px solid var(--color-border);
+  border-right: none;
+  border-top-left-radius: var(--radius-sm);
+  border-bottom-left-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.form-phone-wrapper .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Error and Success States */
+.has-error .form-control {
+  border-color: #DC3545;
+}
+.has-error .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.has-success .form-control {
+  border-color: #28A745;
+}
+.has-success .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-message {
+  display: block;
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-1);
+}
+.form-message.error {
+  color: #DC3545;
+}
+.form-message.success {
+  color: #28A745;
+}
+
+/* Pill Multi-select Toggle Styles */
+.form-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.form-pill-label {
+  cursor: pointer;
+}
+
+.form-pill-label input[type="checkbox"],
+.form-pill-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-pill-text {
+  display: inline-block;
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--color-background-warm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.form-pill-label input:checked ~ .form-pill-text {
+  background-color: var(--color-near-black);
+  color: var(--color-white);
+  border-color: var(--color-near-black);
+}
+
+.form-pill-label input:focus-visible ~ .form-pill-text {
+  box-shadow: 0 0 0 3px rgba(28, 28, 28, 0.2);
+}
+
+/* Dark versions for dark backgrounds */
+.dark-bg .form-label {
+  color: var(--color-white);
+}
+
+.dark-bg .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.dark-bg .form-control:focus {
+  border-color: var(--color-gold);
+}
+
+.dark-bg .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-bg .form-phone-prefix {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
