@@ -1,0 +1,54 @@
+/* css/badges.css */
+
+/* Base Badge Style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 1. Outline */
+.badge-outline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* 2. Gold */
+.badge-gold {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border: 1px solid var(--color-gold);
+}
+
+/* 3. Dark */
+.badge-dark {
+  background-color: var(--color-near-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-near-black);
+}
+
+/* 4. Board Overlay */
+.badge-board {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-near-black);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 5. Popular Label Styles */
+.badge-popular {
+  background-color: #FFF3CD;
+  color: #856404;
+  border: 1px solid #FFEEBA;
+}
