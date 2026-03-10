@@ -1,0 +1,88 @@
+/* css/whatsapp.css */
+
+/* Floating WhatsApp Button Wrapper */
+.floating-actions {
+  position: fixed;
+  bottom: var(--spacing-6);
+  right: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  z-index: var(--z-sticky);
+}
+
+/* WhatsApp Circle Button */
+.btn-whatsapp-floating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-whatsapp-green);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-normal), background-color var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-whatsapp-floating:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: scale(1.1);
+}
+
+.btn-whatsapp-floating svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+/* Smaller Call Button - hidden on desktop, visible on mobile */
+.btn-call-floating {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-near-black);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn-call-floating:hover {
+  transform: scale(1.1);
+  background-color: var(--color-gold);
+}
+
+.btn-call-floating svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: var(--spacing-4);
+    right: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .btn-whatsapp-floating {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .btn-whatsapp-floating svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Show call button on mobile */
+  .btn-call-floating {
+    display: flex;
+  }
+}
