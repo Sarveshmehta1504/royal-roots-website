@@ -1,0 +1,85 @@
+/* css/accordion.css */
+
+.accordion {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  text-align: left;
+  transition: background-color var(--transition-fast);
+}
+
+.accordion-header:hover {
+  background-color: var(--color-background-warm);
+}
+
+.accordion-header:focus-visible {
+  outline: none;
+  background-color: var(--color-background-warm);
+  box-shadow: inset 0 0 0 2px var(--color-gold);
+}
+
+/* Chevron */
+.accordion-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+  color: var(--color-gold);
+}
+
+.accordion-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Open State */
+.accordion-item.is-open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.accordion-item.is-open .accordion-content {
+  visibility: visible;
+  opacity: 1;
+  /* Set max-height via JS for smooth transition or use a large value */
+  max-height: 1000px; 
+}
+
+.accordion-body {
+  padding: 0 var(--spacing-6) var(--spacing-4) var(--spacing-6);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}

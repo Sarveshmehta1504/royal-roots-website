@@ -1,0 +1,100 @@
+/* css/board-3d.css */
+
+.board-3d-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.board-3d-container {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  /* Rotate on X and Y axes */
+  transform: rotateX(10deg) rotateY(-15deg);
+  transition: transform 0.4s ease-out;
+  box-shadow: var(--shadow-board);
+}
+
+.board-3d-wrapper:hover .board-3d-container {
+  /* Reduce rotation slightly on hover for a shift effect */
+  transform: rotateX(5deg) rotateY(-8deg);
+}
+
+/* Front Face */
+.board-front {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Use an aspect ratio to preserve shape, e.g., 4:3 */
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background-color: var(--color-wood-medium);
+}
+
+.board-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right Edge / Thickness */
+.board-edge-right {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to right, var(--color-wood-dark), var(--color-wood-medium));
+  transform-origin: left;
+  transform: rotateY(90deg);
+  border-right: 1px solid rgba(0,0,0,0.3);
+}
+
+/* Bottom Edge / Thickness */
+.board-edge-bottom {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--color-wood-dark), var(--color-wood-medium));
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+/* Wood Grain Effect styling (optional gradient to layer on edges) */
+.wood-grain {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 69, 19, 0.1) 2px,
+    rgba(139, 69, 19, 0.1) 4px
+  );
+}
+
+.board-edge-right.wood-grain,
+.board-edge-bottom.wood-grain {
+  opacity: 0.8;
+}
+
+/* Badge Overlays on Front Face */
+.board-badge {
+  position: absolute;
+  z-index: 3;
+}
+
+.board-badge-top-left {
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+}
+
+.board-badge-bottom-right {
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+}
